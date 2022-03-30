@@ -3,40 +3,17 @@
 
 using namespace std;
 
-string toBinary(int n){
-    string res = "";
-    while(n){
-        res = (char)(n % 2 + '0') + res;
-        n /= 2;
+int countOne(int n){
+    int count = 0;
+    for(int i = 0; i <= 20; i++){
+        if(n & (1 << i)) count++;
     }
-    return res;
-}
-
-int toDex(string s){
-    int res = 0;
-    for(int i = 0; i < s.length(); i++){
-        res = res * 2 + (s[i] - '0');
-    }
-    return res;
-}
-
-int countOne(string s){
-    int cnt = 0;
-    for(int i = 0; i < s.length(); i++){
-        if(s[i] == '1') cnt++;
-    }
-    return cnt;
+    return count;
 }
 
 int solution(int n) {
-    string binN = toBinary(n);
-    int count1N = countOne(binN);
-    
-    for(int i = 1; i <= n; i++){
-        string binI = toBinary(n + i);
-        int countI = countOne(binI);
-        if(countI == count1N) {
-            return n + i;
-        }
+    int NOne = countOne(n);
+    for(int i = n + 1; i <= 2* n; i++){
+        if(countOne(i) == NOne) return i;
     }
 }
