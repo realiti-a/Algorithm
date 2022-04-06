@@ -7,11 +7,6 @@ vector<int> result;
 vector<vector<int>> map;
 
 void press(int dy, int dx, int size){
-    if(size == 1){
-        result.push_back(map[dy][dx]);
-        return;
-    }
-    
     int flag = 0;
     int ans = map[dy][dx];
     for(int y = dy; y < dy + size; y++){
