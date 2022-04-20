@@ -5,7 +5,6 @@
 using namespace std;
 
 vector<int> solution(int n, vector<string> words) {
-    vector<int> answer;
     set<string> used;
     
     string pre = words[0], cur = "";
@@ -37,7 +36,5 @@ vector<int> solution(int n, vector<string> words) {
     cout << breakNumber << "\n";
     
     if(!breakNumber) return {0, 0};
-    answer.push_back(breakNumber % n + 1);
-    answer.push_back(breakNumber / n + 1);
-    return answer;
+    return {breakNumber % n + 1, breakNumber / n + 1};
 }
