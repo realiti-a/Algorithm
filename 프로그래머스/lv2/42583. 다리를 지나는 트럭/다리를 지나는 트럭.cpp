@@ -1,8 +1,6 @@
 #include <string>
 #include <vector>
 #include <queue>
-#include <algorithm>
-#include <iostream>
 using namespace std;
 
 int solution(int bridge_length, int weight, vector<int> truck_weights) {
