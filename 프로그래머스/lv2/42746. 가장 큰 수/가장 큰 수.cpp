@@ -6,11 +6,6 @@ using namespace std;
 vector<string> buf;
 
 int comp(string a, string b){
-    for(int i = 0; i < 4; i++){
-        if(i >= a.length() || i >= b.length()) break;
-        if(a[i] == b[i]) continue;
-        return a[i] > b[i];
-    }
     return a + b > b + a;
 }
 
