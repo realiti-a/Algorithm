@@ -6,24 +6,22 @@ using namespace std;
 int sign[2] = {-1, 1};
 vector<int> nums;
 int targetNum;
-int cnt = 0;
 
-void dfs(int level, int start, int sum){
+int dfs(int level, int sum){
     if(level == nums.size()) {
-        if(targetNum == sum) cnt++;
-        return;
+        if(targetNum == sum) return 1;
+        return 0;
     }
     
-    for(int i = start; i < nums.size(); i++){
-        for(int j = 0; j < 2 ; j++){
-            dfs(level + 1, i + 1, sum + nums[i] * sign[j]);
-        }
+    int res = 0;
+    for(int i = 0; i < 2; i++){
+        res += dfs(level + 1, sum + sign[i] * nums[level]);
     }
+    return res;
 }
 
 int solution(vector<int> numbers, int target) {
     nums = numbers;
     targetNum = target;
-    dfs(0, 0, 0);
-    return cnt;
+    return dfs(0, 0);
 }
